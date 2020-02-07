@@ -1,0 +1,30 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div id="container" style="height:99%">
+			<h1 style="color:red;text-align: center;margin-top:10px;width: 100%;border:2px solid black">Face recognition</h1>
+			<div id="list">
+				<input id="name" type="text">
+				<button id="searchButton">Search</button>
+				<ul style="background-color: white;position: absolute;top:50px;left:10px;width: 510px;height:425px;border-radius: 10px;overflow-y: scroll;">
+				</ul>
+			</div>
+			<div id="searchResultList">
+				<h1 style="text-align: center;margin:0px;color:white;background-color: pink;padding:10px">Found</h1>
+				<p3 class="results" style="width:0px;height: 0px;"></p3>
+				<br class="brResults">
+			</div>
+		</div>
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="index.js"></script>
+</html>
+

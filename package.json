@@ -1,0 +1,32 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HioNobi/Full-stack-js.git"
+  },
+  "author": "Hieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HioNobi/Full-stack-js/issues"
+  },
+  "homepage": "https://github.com/HioNobi/Full-stack-js#readme",
+  "dependencies": {
+    "@google-cloud/connect-firestore": "^1.0.3",
+    "@google-cloud/firestore": "^2.6.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "firebase": "^7.3.0",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}

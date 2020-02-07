@@ -1,0 +1,38 @@
+#list{
+    position: relative;
+    top: 30px;
+    left:10%;
+    width: 42.8%;
+    height: 500px;
+    background-color: pink;
+    border-radius: 10px;
+
+}
+#name{
+    width: 300px;
+    height:40px;
+    border-radius: 15px;
+    border:none;
+    margin: 13px 10px 0px 30px;
+}
+#searchButton{
+    width:60px;
+    height: 30px;
+    border:none;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#searchButton:hover{
+    background-color: lightblue;
+}
+#searchResultList{
+    position: relative;
+    top:-470px;
+    left: 52%;
+    width:400px;
+    height:480px;
+    border:10px solid pink;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
