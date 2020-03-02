@@ -1,4 +1,4 @@
-import face_recognition
+import fr as fr
 import cv2
 import numpy as np
 import requests as req
@@ -13,11 +13,11 @@ cred = credentials.Certificate('test-123-256509-4de57d8199de.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 doc_ref = db.collection(u'users').document(u'data')
-#cv2 and face_recognition
+#cv2 and fr
 video_capture = cv2.VideoCapture(0)
 
-hieu1_image = face_recognition.load_image_file("./images/hieu1.jpg")
-hieu1_face_encoding = face_recognition.face_encodings(hieu1_image)[0]
+hieu1_image = fr.load_image_file("./images/hieu1.jpg")
+hieu1_face_encoding = fr.face_encodings(hieu1_image)[0]
 
 known_face_encodings = [
     hieu1_face_encoding    
@@ -39,15 +39,15 @@ while True:
     rgb_small_frame = small_frame[:, :, ::-1]
 
     if process_this_frame:
-        face_locations = face_recognition.face_locations(rgb_small_frame)
-        face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
+        face_locations = fr.face_locations(rgb_small_frame)
+        face_encodings = fr.face_encodings(rgb_small_frame, face_locations)
 
         face_names = []
         for face_encoding in face_encodings:
-            matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+            matches = fr.compare_faces(known_face_encodings, face_encoding)
             name = "Unknown"
 
-            face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+            face_distances = fr.face_distance(known_face_encodings, face_encoding)
             best_match_index = np.argmin(face_distances)
             if matches[best_match_index]:
                 name = known_face_names[best_match_index]
