@@ -20,7 +20,7 @@ hieu1_image = fr.load_image_file("./images/hieu1.jpg")
 hieu1_face_encoding = fr.face_encodings(hieu1_image)[0]
 
 known_face_encodings = [
-    hieu1_face_encoding    
+    hieu1_face_encoding
 ]
 known_face_names = [
     "Trung Hieu"
@@ -35,7 +35,7 @@ while True:
     ret, frame = video_capture.read()
 
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
-    
+
     rgb_small_frame = small_frame[:, :, ::-1]
 
     if process_this_frame:

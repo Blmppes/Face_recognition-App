@@ -32,7 +32,6 @@
     left: 52%;
     width:400px;
     height:480px;
-    border:10px solid pink;
     border-radius: 5px;
     overflow-y: scroll;
 }
