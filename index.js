@@ -1,17 +1,5 @@
-
-firebase.initializeApp({
-  apiKey: 'AIzaSyAlieG28M5AmvPAcNpG7L5uXB_MYirZhvE',
-  authDomain: 'https://test 123.firebaseapp.com',
-  projectId: 'test-123-256509'
-});
-
-const db = firebase.firestore();
-let ulTag = document.querySelector("#list ul");
-let searchButton = document.querySelector("#searchButton");
-let userName = document.querySelector("#name");
-let namesList = [];
-
 db.collection('users').onSnapshot(snapshot => {
+  console.log("ss")
   let changes = snapshot.docChanges();
   changes.forEach(change => {
     let presentName = "";
@@ -25,11 +13,11 @@ db.collection('users').onSnapshot(snapshot => {
         namesList.push(child1.textContent);
       }
     }
-    db.collection('users').doc("data").delete();
   })
 })
 
-searchButton.addEventListener("click",()=>{
+searchButton.addEventListener("click",(e)=>{
+  e.preventDefault();
   $(".results").remove();
   $(".brResults").remove();
   namesList.forEach(username => {
@@ -39,8 +27,86 @@ searchButton.addEventListener("click",()=>{
       child2.innerHTML = username;
       child2.className = "results";
       br.className = "brResults";
-      document.querySelector("#searchResultList").appendChild(child2);
-      document.querySelector("#searchResultList").appendChild(br);
+      document.querySelector("#found-list").appendChild(child2);
+      document.querySelector("#found-list").appendChild(br);
     }
   })
 });
+
+gLoginBtn.addEventListener("click", (e) => {
+  firebase.auth().signInWithPopup(g_provider).then(() => {
+      lgCloseBtn.click();
+      alert("You have successfully signed up!");
+  }).catch(function(error) {
+      alert(error.message);
+      console.log(error.message);
+  });
+})
+
+fbLoginBtn.addEventListener("click", (e) => {
+  firebase.auth().signInWithPopup(fb_provider);
+})
+
+const signUp = () => {
+  auth.createUserWithEmailAndPassword(registerEmail.value, registerPassword.value).then(() => {
+      alert("You have successfully signed up!")
+      registerEmail.value = "";
+      registerPassword = "";
+  }).catch(function(error) {
+      alert(error.message);
+  });
+}
+
+const signIn = () => {
+  auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value).then(cred => {
+      alert("You have successfully logined");
+      loginEmail.value = "";
+      loginPassword.value = "";
+  }).catch(function(error) {
+      alert(error.message);
+  });
+}
+
+registerBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  if(registerCheck.checked == false){
+      alert("Please agree with terms and licenses");
+      return;
+  }else if(registerEmail.value.toLowerCase() != registerEmail.value){
+      alert("All letters must be in lowercase");
+      return;
+  }
+  signUp();
+})
+
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  signIn();
+})
+
+window.addEventListener("keypress", (e)=>{
+  if(e.keyCode == 13 && inputMessage.value != "" && user != ""){
+      updateToFireBase()
+  }else if(e.keyCode == 13 && (registerEmail.value != "" && registerPassword.value != "")){
+      if(registerCheck.checked == false){
+          alert("Please agree with terms and licenses");
+          return;
+      }else if(registerEmail.value.toLowerCase() != registerEmail.value){
+          alert("All letters must be in lowercase");
+          return;
+      }
+      registerBtn.click();
+  }else if(e.keyCode == 13 && (loginEmail.value != "" && loginPassword.value != "")){
+      loginBtn.click();
+  };
+})
+
+document.getElementById("logout-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  auth.signOut().then(() => {
+      alert("You have successfully signed out!")
+  })
+  .catch(function(error) {
+      alert(error.message);
+  });
+})

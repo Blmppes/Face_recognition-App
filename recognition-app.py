@@ -1,18 +1,15 @@
 import face_recognition as fr
 import cv2
 import numpy as np
-import requests as req
-import sys, os
-import datetime
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+from firebase_admin import credentials, firestore
 
 #firestore
-cred = credentials.Certificate('test-123-256509-4de57d8199de.json')
+cred = credentials.Certificate("test-123-256509-firebase-adminsdk-qiqh2-b88e167d64.json")
 firebase_admin.initialize_app(cred)
+
 db = firestore.client()
-doc_ref = db.collection(u'users').document(u'data')
+doc_ref = db.collection(u'users')
 #cv2 and fr
 video_capture = cv2.VideoCapture(0)
 
@@ -52,7 +49,8 @@ while True:
             if matches[best_match_index]:
                 name = known_face_names[best_match_index]
                 result = name
-                doc_ref.set({
+                print(result)
+                doc_ref.add({
                     u'object':result
                 })
             face_names.append(name)

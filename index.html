@@ -6,60 +6,159 @@
 		<title>Document</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-	</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  </head>
 	<body>
-		<div id="jumbotron-fluid">
-			<nav class="navbar navbar-expand-lg navbar-light bg-info">
-                <a class="navbar-brand" href="#">Recogdia</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
-                  <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <a class="navbar-brand text-light" href="#">Recogdia</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active mx-3">
+            <a class="nav-link text-light" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown active mx-3">
+            <a class="nav-link dropdown-toggle text-light" href="#" data-toggle="dropdown">
+              Dropdown
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="name">
+          <button class="btn btn-outline-dark mt-2" type="submit" id="searchButton" style="width: 70px;height: 35px;">Search</button>
+        </form>
+        <ul class="navbar-nav ml-auto" id="reul">
+          <li class="nav-item active">
+              <button type="button" class="btn btn-info mr-1" data-toggle="modal" data-target="#loginModal" title="Click to login">
+                  Login
+              </button>
+          </li>
+          <li class="nav-item active">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#registerModal" title="Click to create an account">
+                  Register
+              </button>
+          </li>
+          <li class="nav-item active">
+              <button type="button" class="btn btn-danger ml-1" title="Click to sign out" id="logout-btn">
+                  Logout
+              </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login to begin chatting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <div class="navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active mx-3">
-                      <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown active mx-3">
-                      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                        Dropdown
-                      </a>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="name">
-                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="searchButton">Search</button>
-                  </form>
+            </div>
+            <div class="modal-body">
+                <div id="login-form">
+                    <div class="form-group">
+                      <label for="loginEmail">Email address:</label>
+                      <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                      <label for="loginPassword">Password:</label>
+                      <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="loginCheck">
+                      <label class="form-check-label" for="loginCheck">Remember password</label>
+                    </div>
                 </div>
-            </nav>
-		</div>
+            </div>
+            <div class="modal-footer" style="padding: 5px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="login-close-btn">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="login-btn">Login</button>
+            </div>
+            <div class="other-btns">
+                <hr style="margin: 0px 16px 5px 16px">
+                <h1 class="text-center lead" style="font-size: 15px;">-----------------------------Or login with:-----------------------------</h1>
+                <div class="other-btns-wraper d-flex" style="display: flex; justify-content: center;">
+                    <button class="btn btn-light d-flex mr-1" id="fb-login-btn" title="Click to login with fackbook" style="padding:5px;text-align: center;"><i class="fab fa-facebook-square" style="color:blue;font-size: 25px;"></i></button>
+                    <button class="btn btn-danger d-flex mr-1 mt-1" id="g-login-btn" title="Click to login with google" style="padding:0px 4px;text-align: center;height: 25px;"><i class="fab fa-google" style="font-size: 15px;"></i></button>
+                    <button class="btn btn-light d-flex" id="t-login-btn" title="Click to login with twitter" style="padding:5px;text-align: center;"><i class="fab fa-twitter" style="color:rgb(49, 162, 255)"></i></button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Create your own account for free</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              <div class="modal-body">
+                  <form id="register-form">
+                      <div class="form-group">
+                        <label for="registerEmail">Email address:</label>
+                        <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label for="registerPassword">Password:</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+                        <label for="ip-username">Username:</label>
+                        <input type="text" class="form-control" id="ip-username" placeholder="e.g Ngo Bao Chau...">
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="registerCheck">
+                        <label class="form-check-label" for="registerCheck">I agree with terms and licenses</label>
+                      </div>
+                  </form>
+              </div>
+                  <div class="modal-footer" style="padding: 5px;">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="register-btn">Register</button>
+              </div>
+              <div class="other-btns">
+                <hr style="margin: 0px 16px 5px 16px">
+                <h1 class="text-center lead" style="font-size: 15px;">-----------------------------Or login with:-----------------------------</h1>
+                <div class="other-btns-wraper d-flex" style="display: flex; justify-content: center;">
+                    <button class="btn btn-light d-flex mr-1" id="fb-login-btn" title="Click to login with fackbook" style="padding:5px;text-align: center;"><i class="fab fa-facebook-square" style="color:blue;font-size: 25px;"></i></button>
+                    <button class="btn btn-danger d-flex mr-1 mt-1" id="g-login-btn" title="Click to login with google" style="padding:0px 4px;text-align: center;height: 25px;"><i class="fab fa-google" style="font-size: 15px;"></i></button>
+                    <button class="btn btn-light d-flex" id="t-login-btn" title="Click to login with twitter" style="padding:5px;text-align: center;"><i class="fab fa-twitter" style="color:rgb(49, 162, 255)"></i></button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
 		<div id="container" style="height:99%">
 			<h1 style="color:red;text-align: center;margin-top:10px;width: 100%;border:2px solid black">Recogdia</h1>
 			<div id="list" class="bg-info">
+        <h1 class="bg-info text-center m-0 text-light p-1">Realtime list</h1>
 				<ul style="background-color: white;position: absolute;top:50px;left:10px;width: 510px;height:425px;border-radius: 10px;overflow-y: scroll;">
 			</div>
 			<div id="searchResultList">
-				<h1 style="text-align: center;margin:0px;color:white;padding:10px" class="bg-info">Found</h1>
-				<p3 class="results" style="width:0px;height: 0px;"></p3>
-				<br class="brResults">
+				<h1 class="bg-info text-center m-0 text-light p-1">Found</h1>
+				<ul class="bg-light" id="found-list" style="height: 400px;overflow-y: auto;">
+
+        </ul>
 			</div>
 		</div>
-	</body>
-	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="index.js"></script>
+  </body>
+  <script src="init.js"></script>
+  <script src="index.js"></script>
 </html>
 

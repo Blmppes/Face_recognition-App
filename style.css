@@ -31,7 +31,9 @@
     top:-470px;
     left: 52%;
     width:400px;
-    height:480px;
+    height:499px;
     border-radius: 5px;
-    overflow-y: scroll;
+    padding: 10px;
+    background-color: rgb(23, 162, 184);
+    overflow-y: auto;
 }
