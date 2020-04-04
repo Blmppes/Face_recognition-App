@@ -12,6 +12,11 @@ db.collection('users').onSnapshot(snapshot => {
         ulTag.appendChild(child1);
         namesList.push(child1.textContent);
       }
+    }else if(change.type == 'removed'){
+      let html = `<ul style="background-color: white;position: absolute;top:50px;left:10px;width: 510px;height:425px;border-radius: 10px;overflow-y: scroll;">
+      </ul>`
+
+      ulTag.innerHTML = html;
     }
   })
 })
