@@ -15,6 +15,7 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 const g_provider = new firebase.auth.GoogleAuthProvider();
 const fb_provider = new firebase.auth.FacebookAuthProvider();
+let collection_times = 0;
 
 let ulTag = document.querySelector("#list ul");
 let searchButton = document.querySelector("#searchButton");

@@ -1,24 +1,23 @@
 db.collection('users').onSnapshot(snapshot => {
+  console.log(collection_times)
+  if(collection_times >= 1){
+    collection_times = 0;
+    return;
+  }
   console.log("ss")
   let changes = snapshot.docChanges();
   changes.forEach(change => {
-    let presentName = "";
     if(change.type == 'added' || change.type === "modified"){
-      if(change.doc.data().object != presentName){
-        presentName =  change.doc.data().object;
-        let d = new Date(); 
-        let child1 = document.createElement("li");
-        child1.innerHTML = `${change.doc.data().object} arrived at ${d.getHours()}:${d.getMinutes()} ${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()}`
-        ulTag.appendChild(child1);
-        namesList.push(child1.textContent);
-      }
-    }else if(change.type == 'removed'){
-      let html = `<ul style="background-color: white;position: absolute;top:50px;left:10px;width: 510px;height:425px;border-radius: 10px;overflow-y: scroll;">
-      </ul>`
-
-      ulTag.innerHTML = html;
+      let d = change.doc.data().time; 
+      let child1 = document.createElement("li");
+      console.log(d)
+      let html = `${change.doc.data().object} has arrived at ${d}`
+      child1.innerHTML = html;
+      ulTag.appendChild(child1);
+      namesList.push(child1.textContent);  
     }
   })
+  collection_times += 1;
 })
 
 searchButton.addEventListener("click",(e)=>{

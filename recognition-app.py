@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import firebase_admin
 from firebase_admin import credentials, firestore
+from datetime import datetime, date
 
 #firestore
 cred = credentials.Certificate("test-123-256509-firebase-adminsdk-qiqh2-b88e167d64.json")
@@ -49,9 +50,11 @@ while True:
             if matches[best_match_index]:
                 name = known_face_names[best_match_index]
                 result = name
+                cr_date = datetime.now()
                 print(result)
                 doc_ref.add({
-                    u'object':result
+                    u'object':result,
+                    u'time': f'{date.today()} {cr_date.hour}:{cr_date.minute}:{cr_date.second}'
                 })
             face_names.append(name)
 
