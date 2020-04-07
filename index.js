@@ -1,24 +1,9 @@
-db.collection('users').onSnapshot(snapshot => {
-  console.log(collection_times)
-  if(collection_times >= 1){
-    collection_times = 0;
-    return;
-  }
-  console.log("ss")
-  let changes = snapshot.docChanges();
-  changes.forEach(change => {
-    if(change.type == 'added' || change.type === "modified"){
-      let d = change.doc.data().time; 
-      let child1 = document.createElement("li");
-      console.log(d)
-      let html = `${change.doc.data().object} has arrived at ${d}`
-      child1.innerHTML = html;
-      ulTag.appendChild(child1);
-      namesList.push(child1.textContent);  
-    }
-  })
-  collection_times += 1;
-})
+window.onload = () => {
+  my_interval = setInterval(() => {
+      ulTag.scrollTop = ulTag.scrollHeight;
+      clearInterval(my_interval);
+  },100);
+}
 
 searchButton.addEventListener("click",(e)=>{
   e.preventDefault();
@@ -37,80 +22,3 @@ searchButton.addEventListener("click",(e)=>{
   })
 });
 
-gLoginBtn.addEventListener("click", (e) => {
-  firebase.auth().signInWithPopup(g_provider).then(() => {
-      lgCloseBtn.click();
-      alert("You have successfully signed up!");
-  }).catch(function(error) {
-      alert(error.message);
-      console.log(error.message);
-  });
-})
-
-fbLoginBtn.addEventListener("click", (e) => {
-  firebase.auth().signInWithPopup(fb_provider);
-})
-
-const signUp = () => {
-  auth.createUserWithEmailAndPassword(registerEmail.value, registerPassword.value).then(() => {
-      alert("You have successfully signed up!")
-      registerEmail.value = "";
-      registerPassword = "";
-  }).catch(function(error) {
-      alert(error.message);
-  });
-}
-
-const signIn = () => {
-  auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value).then(cred => {
-      alert("You have successfully logined");
-      loginEmail.value = "";
-      loginPassword.value = "";
-  }).catch(function(error) {
-      alert(error.message);
-  });
-}
-
-registerBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  if(registerCheck.checked == false){
-      alert("Please agree with terms and licenses");
-      return;
-  }else if(registerEmail.value.toLowerCase() != registerEmail.value){
-      alert("All letters must be in lowercase");
-      return;
-  }
-  signUp();
-})
-
-loginBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  signIn();
-})
-
-window.addEventListener("keypress", (e)=>{
-  if(e.keyCode == 13 && inputMessage.value != "" && user != ""){
-      updateToFireBase()
-  }else if(e.keyCode == 13 && (registerEmail.value != "" && registerPassword.value != "")){
-      if(registerCheck.checked == false){
-          alert("Please agree with terms and licenses");
-          return;
-      }else if(registerEmail.value.toLowerCase() != registerEmail.value){
-          alert("All letters must be in lowercase");
-          return;
-      }
-      registerBtn.click();
-  }else if(e.keyCode == 13 && (loginEmail.value != "" && loginPassword.value != "")){
-      loginBtn.click();
-  };
-})
-
-document.getElementById("logout-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  auth.signOut().then(() => {
-      alert("You have successfully signed out!")
-  })
-  .catch(function(error) {
-      alert(error.message);
-  });
-})

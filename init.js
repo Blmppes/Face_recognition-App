@@ -36,3 +36,4 @@ let loginForm = document.getElementById("loginModal");
 let fbLoginBtn = document.getElementById("fb-login-btn");
 let gLoginBtn = document.getElementById("g-login-btn");
 let lgCloseBtn = document.getElementById("login-close-btn");
+let resetPasswordBtn = document.getElementById("reset-password-btn");
