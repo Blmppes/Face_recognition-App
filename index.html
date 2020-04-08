@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Document</title>
+		<title>Recogdia</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -44,17 +45,22 @@
         </form>
         <ul class="navbar-nav ml-auto" id="reul">
           <li class="nav-item active">
-              <button type="button" class="btn btn-info mr-1" data-toggle="modal" data-target="#loginModal" title="Click to login">
+              <button id="login-modal-btn" style="display: none;" type="button" class="btn btn-info mr-1" data-toggle="modal" data-target="#loginModal" title="Click to login">
                   Login
               </button>
           </li>
           <li class="nav-item active">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#registerModal" title="Click to create an account">
+              <button id="register-modal-btn" style="display: none;" type="button" class="btn btn-info" data-toggle="modal" data-target="#registerModal" title="Click to create an account">
                   Register
               </button>
           </li>
           <li class="nav-item active">
-              <button type="button" class="btn btn-danger ml-1" title="Click to sign out" id="logout-btn">
+            <button style="display: none;" type="button" class="btn btn-primary ml-1" title="Click to sign out" id="profile-btn" style="display: none;">
+                <a href="profile.html" style="text-decoration: none;color:white">Profile</a>
+            </button>
+        </li>
+          <li class="nav-item active">
+              <button style="display: none;" type="button" class="btn btn-danger ml-1" title="Click to sign out" id="logout-btn" style="display: none;">
                   Logout
               </button>
           </li>

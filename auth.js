@@ -1,3 +1,11 @@
+auth.onAuthStateChanged((user) => {
+    if(user){
+        setUpNav(true);
+    }else{
+        setUpNav(false);
+    }
+})
+
 resetPasswordBtn.addEventListener("click", (e) => {
     let userResetEmail = prompt("Enter your reset email:");
     
@@ -13,7 +21,7 @@ resetPasswordBtn.addEventListener("click", (e) => {
 })
 
 gLoginBtn.addEventListener("click", (e) => {
-    firebase.auth().signInWithRedirect(g_provider).then(() => {
+    firebase.auth().signInWithPopup(g_provider).then(() => {
         lgCloseBtn.click();
         alert("You have successfully signed up!");
     }).catch(function(error) {
@@ -23,7 +31,7 @@ gLoginBtn.addEventListener("click", (e) => {
   })
   
   fbLoginBtn.addEventListener("click", (e) => {
-    firebase.auth().signInWithRedirect(fb_provider);
+    firebase.auth().signInWithPopup(fb_provider);
 })
   
 const signUp = async () => {
