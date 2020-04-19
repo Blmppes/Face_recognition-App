@@ -15,12 +15,15 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 const g_provider = new firebase.auth.GoogleAuthProvider();
 const fb_provider = new firebase.auth.FacebookAuthProvider();
-let collection_times = 0;
 
+if(window.location.href == "http://127.0.0.1:5500/index.html" || window.location.href == "https://hionobi.github.io/Face_recognition-App/"){
+  console.log("ss")
+  
+}
+let collection_times = 0;
 let ulTag = document.querySelector("#list ul");
 let searchButton = document.querySelector("#searchButton");
 let userName = document.querySelector("#name");
-let namesList = [];
 
 let registerEmail = document.getElementById("registerEmail");
 let registerPassword= document.getElementById("registerPassword");
@@ -37,3 +40,4 @@ let fbLoginBtn = document.getElementById("fb-login-btn");
 let gLoginBtn = document.getElementById("g-login-btn");
 let lgCloseBtn = document.getElementById("login-close-btn");
 let resetPasswordBtn = document.getElementById("reset-password-btn");
+let namesList = [];

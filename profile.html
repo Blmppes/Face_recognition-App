@@ -16,49 +16,136 @@
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
-            <a class="navbar-brand text-light" href="#">Recogdia</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active mx-3">
-                  <a class="nav-link text-light" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown active mx-3">
-                  <a class="nav-link dropdown-toggle text-light" href="#" data-toggle="dropdown">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="name">
-                <button class="btn btn-outline-dark mt-2" type="submit" id="searchButton" style="width: 70px;height: 35px;">Search</button>
-              </form>
-              <ul class="navbar-nav ml-auto" id="reul">
-                <li class="nav-item active">
-                  <button type="button" class="btn btn-light ml-1" title="Click to sign out" id="home-btn">
-                      <a href="index.html" style="text-decoration: none;color:black">Home</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-info">
+          <a class="navbar-brand text-light" href="#">Recogdia</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active mx-3">
+                <a class="nav-link text-light" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown active mx-3">
+                <a class="nav-link dropdown-toggle text-light" href="#" data-toggle="dropdown">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" id="reul">
+              <li class="nav-item active">
+                <button type="button" class="btn btn-light ml-1" title="Click to sign out" id="home-btn">
+                    <a href="index.html" style="text-decoration: none;color:black">Home</a>
+                </button>
+              </li>
+              <li class="nav-item active">
+                <button id="login-modal-btn" style="display: none;" type="button" class="btn btn-info mr-1" data-toggle="modal" data-target="#loginModal" title="Click to login">
+                    Login
+                </button>
+              </li>
+              <li class="nav-item active">
+                  <button id="register-modal-btn" style="display: none;" type="button" class="btn btn-info" data-toggle="modal" data-target="#registerModal" title="Click to create an account">
+                      Register
                   </button>
-                </li>
-                <li class="nav-item active">
-                    <button type="button" class="btn btn-danger ml-1" title="Click to sign out" id="logout-btn">
-                        Logout
-                    </button>
-                </li>
-              </ul>
+              </li>
+              <li class="nav-item active">
+                  <button type="button" class="btn btn-danger ml-1" title="Click to sign out" id="logout-btn">
+                      Logout
+                  </button>
+              </li>
+            </ul>
+          </div>
+      </nav>
+      <!-- Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalLabel">Login to begin chatting</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div id="login-form">
+                      <div class="form-group">
+                        <label for="loginEmail">Email address:</label>
+                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="loginCheck">
+                        <label class="form-check-label" for="loginCheck">Remember password</label>
+                      </div>
+                  </div>
+              </div>
+              <button type="button" class="btn btn-warning" data-dismiss="modal" id="reset-password-btn">Forgot your password ?</button>
+              <div class="modal-footer" style="padding: 5px;">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="login-close-btn">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="login-btn">Login</button>
+              </div>
+              <div class="other-btns">
+                  <hr style="margin: 0px 16px 5px 16px">
+                  <h1 class="text-center lead" style="font-size: 15px;">-----------------------------Or login with:-----------------------------</h1>
+                  <div class="other-btns-wraper d-flex" style="display: flex; justify-content: center;">
+                      <button class="btn btn-light d-flex mr-1" id="fb-login-btn" title="Click to login with fackbook" style="padding:5px;text-align: center;"><i class="fab fa-facebook-square" style="color:blue;font-size: 25px;"></i></button>
+                      <button class="btn btn-danger d-flex mr-1 mt-1" id="g-login-btn" title="Click to login with google" style="padding:0px 4px;text-align: center;height: 25px;"><i class="fab fa-google" style="font-size: 15px;"></i></button>
+                      <button class="btn btn-light d-flex" id="t-login-btn" title="Click to login with twitter" style="padding:5px;text-align: center;"><i class="fab fa-twitter" style="color:rgb(49, 162, 255)"></i></button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Create your own account for free</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="form-group">
+                          <label for="registerEmail">Email address:</label>
+                          <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                          <label for="registerPassword">Password:</label>
+                          <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+                          <label for="ip-username">Username:</label>
+                          <input type="text" class="form-control" id="ip-username" placeholder="e.g Ngo Bao Chau...">
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="registerCheck">
+                          <label class="form-check-label" for="registerCheck">I agree with terms and licenses</label>
+                        </div>
+                    </form>
+                </div>
+                    <div class="modal-footer" style="padding: 5px;">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="register-btn">Register</button>
+                </div>
+                <div class="other-btns">
+                  <hr style="margin: 0px 16px 5px 16px">
+                  <h1 class="text-center lead" style="font-size: 15px;">-----------------------------Or login with:-----------------------------</h1>
+                  <div class="other-btns-wraper d-flex" style="display: flex; justify-content: center;">
+                      <button class="btn btn-light d-flex mr-1" id="fb-login-btn" title="Click to login with fackbook" style="padding:5px;text-align: center;"><i class="fab fa-facebook-square" style="color:blue;font-size: 25px;"></i></button>
+                      <button class="btn btn-danger d-flex mr-1 mt-1" id="g-login-btn" title="Click to login with google" style="padding:0px 4px;text-align: center;height: 25px;"><i class="fab fa-google" style="font-size: 15px;"></i></button>
+                      <button class="btn btn-light d-flex" id="t-login-btn" title="Click to login with twitter" style="padding:5px;text-align: center;"><i class="fab fa-twitter" style="color:rgb(49, 162, 255)"></i></button>
+                  </div>
+                </div>
             </div>
-        </nav>
+          </div>
+      </div>
     </body> 
-    <script src="init-pofile.js"></script>
-    <script src="index-profile.js"></script>
-    <script src="firestore-profile.js"></script>
+    <script src="init.js"></script>
+    <script src="index.js"></script>
     <script src="auth.js"></script> 
 </html>

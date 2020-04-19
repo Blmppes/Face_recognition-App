@@ -40,8 +40,8 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="name">
-          <button class="btn btn-outline-dark mt-2" type="submit" id="searchButton" style="width: 70px;height: 35px;">Search</button>
+          <input class="form-control m-0 mr-2" type="search" placeholder="Search" aria-label="Search" id="name">
+          <button class="btn btn-outline-dark" type="submit" id="searchButton" style="width: 70px;height: 35px;">Search</button>
         </form>
         <ul class="navbar-nav ml-auto" id="reul">
           <li class="nav-item active">
@@ -179,19 +179,21 @@
       </a>
     </div>
 
-		<div id="article" style="height:99%">
-			<div id="list" class="bg-info">
-        <h1 class="bg-info text-center m-0 text-light p-1">Realtime list</h1>
-				<ul style="background-color: white;position: absolute;top:50px;left:10px;width: 510px;height:425px;border-radius: 10px;overflow-y: auto;">
-        </ul>
+    <div id="article" style="height:99%">
+      <section id="result-sec" class="row" style="margin: 10px auto;width: 90%;">
+        <div id="list" class="bg-info col-lg-6 col-sm-6 col-md-auto">
+          <h1 class="bg-info text-center m-0 text-light p-1">Realtime list</h1>
+          <ul style="background-color: white;height:425px;border-radius: 10px;overflow-y: auto;width: auto;">
+          </ul>
+        </div>
+        <div id="searchResultList" class="col-lg-5 col-sm-5 col-md-auto">
+          <h1 class="bg-info text-center m-0 text-light p-1">Found</h1>
+          <ul class="bg-light" id="found-list" style="height: 400px;overflow-y: auto;width: auto;">
+  
+          </ul>
+        </div>
       </div>
-			<div id="searchResultList">
-				<h1 class="bg-info text-center m-0 text-light p-1">Found</h1>
-				<ul class="bg-light" id="found-list" style="height: 400px;overflow-y: auto;">
-
-        </ul>
-			</div>
-		</div>
+      </section>
   </body>
   <script src="init.js"></script>
   <script src="index.js"></script>

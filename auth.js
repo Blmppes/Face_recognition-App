@@ -28,12 +28,12 @@ gLoginBtn.addEventListener("click", (e) => {
         alert(error.message);
         console.log(error.message);
     });
-  })
-  
-  fbLoginBtn.addEventListener("click", (e) => {
+    })
+    
+    fbLoginBtn.addEventListener("click", (e) => {
     firebase.auth().signInWithPopup(fb_provider);
 })
-  
+    
 const signUp = async () => {
     auth.createUserWithEmailAndPassword(registerEmail.value, registerPassword.value).then(() => {
         alert("You have successfully signed up!")
@@ -60,7 +60,7 @@ const signUp = async () => {
         }
     })
 }
-  
+    
 const signIn = () => {
     auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value).then(cred => {
         alert("You have successfully logined");
@@ -70,7 +70,7 @@ const signIn = () => {
         alert(error.message);
     });
 }
-  
+    
 registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if(registerCheck.checked == false){
@@ -83,12 +83,12 @@ registerBtn.addEventListener("click", (e) => {
 
     signUp();
 })
-  
+    
 loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     signIn();
 })
-  
+    
 window.addEventListener("keypress", (e)=>{
     if(e.keyCode == 13 && inputMessage.value != "" && user != ""){
         updateToFireBase()
@@ -105,6 +105,7 @@ window.addEventListener("keypress", (e)=>{
         loginBtn.click();
     };
 })
+
   
 document.getElementById("logout-btn").addEventListener("click", (e) => {
     e.preventDefault();
