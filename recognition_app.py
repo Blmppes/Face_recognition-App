@@ -27,9 +27,9 @@ known_face_names = [
 face_locations = []
 face_encodings = []
 face_names = []
-process_this_frame = True
 result = ""
 def main():
+    process_this_frame = True
     while True:
         ret, frame = video_capture.read()
 
